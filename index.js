@@ -20,6 +20,9 @@ app.get('/', function(req, res) {
 
 let token = "EAAeEUf6U8mMBAITBtRhlLUzUrmQ2foucRY2AiO4ACIsdVEy55UNAZCxzkUC7ghtvvXNLmYKNpzuAaob5mTrZCNRwjAZAeViYWmnKl2lsr6vaKjRNaPf21EPR4PZB4Dvk3UC1KpMaRNWo9i9Sz32PabYmZBxPJNAfqkwpnCsxcFgZDZD"
 
+
+app.disable('etag');
+
 // Facebook 
 
 app.get('/webhook/', function(req, res) {
@@ -60,6 +63,8 @@ function sendText(sender, text) {
 		}
 	})
 }
+
+
 
 app.listen(app.get('port'), function() {
 	console.log("running: port")
