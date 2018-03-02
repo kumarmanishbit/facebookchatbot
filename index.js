@@ -64,7 +64,8 @@ function sendText(sender, text) {
     let aiText = ""
     
     apiaiReq.on('response', (response) => {
-      aiText = response.result;
+     // aiText = response.result;
+        aiText = "Manish"
       //text = aiText;
     });
     
