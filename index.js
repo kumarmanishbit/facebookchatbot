@@ -33,23 +33,24 @@ app.get('/', function(req, res) {
     let apiaiReq = apiai.textRequest("Hi how are you?", {
       sessionId: APIAI_SESSION_ID
     });
-    let aiText = ""
+    
+   //  let aiText = ""
     apiaiReq.on('response', (response) => {
      // aiText = response.result;
-        aiText = response.result;
+        let aiText = response.result;
+        console.log(aiText)
       //text = aiText;
     });
     
-    console.log(aiText)
+   // console.log(aiText)
     
     apiaiReq.on('error', (error) => {
       console.log(error)
     });
+    
     res.send(aiText)
 	//res.send("Hi I am a chatbot")
 })
-
-
 
 
 // Facebook 
