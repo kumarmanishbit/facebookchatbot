@@ -34,10 +34,10 @@ app.get('/', function(req, res) {
       sessionId: APIAI_SESSION_ID
     });
     
-   //  let aiText = ""
+    let aiText = ""
     apiaiReq.on('response', (response) => {
      // aiText = response.result;
-        let aiText = response.result;
+        aiText = response.result.fulfillment.speech;
         console.log(aiText)
       //text = aiText;
     });
@@ -48,9 +48,9 @@ app.get('/', function(req, res) {
       console.log(error)
     });
     
-    apiaiReq.end();
+    apiaiReq.end(aiText);
     
-    res.send("mansih")
+    res.send()
 	//res.send("Hi I am a chatbot")
 })
 
