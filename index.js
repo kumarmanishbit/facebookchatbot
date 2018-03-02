@@ -52,7 +52,7 @@ app.get('/', function(req, res) {
     
     apiaiReq.end()
     
-    res.send(aiText)
+   // res.send(aiText)
 	//res.send("Hi I am a chatbot")
 })
 
