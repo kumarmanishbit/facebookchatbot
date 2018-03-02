@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 let token = "EAAeEUf6U8mMBAITBtRhlLUzUrmQ2foucRY2AiO4ACIsdVEy55UNAZCxzkUC7ghtvvXNLmYKNpzuAaob5mTrZCNRwjAZAeViYWmnKl2lsr6vaKjRNaPf21EPR4PZB4Dvk3UC1KpMaRNWo9i9Sz32PabYmZBxPJNAfqkwpnCsxcFgZDZD"
 
 
-let APIAI_TOKEN="760b473de6e7408cbfa5a893258d8cb8";
+let APIAI_TOKEN="760b473de6e7408cbfa5a893258d8cb8"
 let APIAI_SESSION_ID="manish"
 
 app.disable('etag');
@@ -62,6 +62,7 @@ function sendText(sender, text) {
     
     //let text = "";
     let aiText = ""
+    
     apiaiReq.on('response', (response) => {
       aiText = response.result;
       //text = aiText;
