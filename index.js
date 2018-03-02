@@ -60,12 +60,14 @@ function sendText(sender, text) {
     });
     
     
-    let text = "";
+    //let text = "";
     
     apiaiReq.on('response', (response) => {
       let aiText = response.result;
-      text = aiText;
+      //text = aiText;
     });
+    
+    console.log(aiText);
     
     apiaiReq.on('error', (error) => {
       console.log(error);
@@ -74,7 +76,7 @@ function sendText(sender, text) {
     apiaiReq.end();
     
     
-	let messageData = {text: text}
+	let messageData = {text: aiText}
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
