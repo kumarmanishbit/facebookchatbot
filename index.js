@@ -113,7 +113,7 @@ function sendText(sender, text) {
     
     });
     
-    console.log(aiText);
+  //  console.log(aiText);
     
     apiaiReq.on('error', (error) => {
       console.log(error)
