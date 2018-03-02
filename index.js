@@ -34,7 +34,8 @@ app.get('/', function(req, res) {
       sessionId: APIAI_SESSION_ID
     });
     
-    let aiText = ""
+    var aiText = ""
+        
     apiaiReq.on('response', (response) => {
      // aiText = response.result;
         aiText = response.result.fulfillment.speech;
