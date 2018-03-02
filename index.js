@@ -21,7 +21,14 @@ app.get('/', function(req, res) {
 let token = "EAAeEUf6U8mMBAITBtRhlLUzUrmQ2foucRY2AiO4ACIsdVEy55UNAZCxzkUC7ghtvvXNLmYKNpzuAaob5mTrZCNRwjAZAeViYWmnKl2lsr6vaKjRNaPf21EPR4PZB4Dvk3UC1KpMaRNWo9i9Sz32PabYmZBxPJNAfqkwpnCsxcFgZDZD"
 
 
+let APIAI_TOKEN="760b473de6e7408cbfa5a893258d8cb8";
+let APIAI_SESSION_ID="manish"
+
 app.disable('etag');
+
+
+const apiai = require('apiai')(APIAI_TOKEN);
+
 
 // Facebook 
 
@@ -39,13 +46,34 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			sendText(sender, "Text echo: " + text.substring(0, 100))
+			//sendText(sender, "Text echo: " + text.substring(0, 100))
+            sendText(sender, text)
 		}
 	}
 	res.sendStatus(200)
 })
 
 function sendText(sender, text) {
+    
+    let apiaiReq = apiai.textRequest(text, {
+      sessionId: APIAI_SESSION_ID
+    });
+    
+    
+    let text = "";
+    
+    apiaiReq.on('response', (response) => {
+      let aiText = response.result;
+      text = aiText;
+    });
+    
+    apiaiReq.on('error', (error) => {
+      console.log(error);
+    });
+    
+    apiaiReq.end();
+    
+    
 	let messageData = {text: text}
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
