@@ -12,22 +12,44 @@ app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-// ROUTES
-
-app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot")
-})
-
-let token = "EAAeEUf6U8mMBAITBtRhlLUzUrmQ2foucRY2AiO4ACIsdVEy55UNAZCxzkUC7ghtvvXNLmYKNpzuAaob5mTrZCNRwjAZAeViYWmnKl2lsr6vaKjRNaPf21EPR4PZB4Dvk3UC1KpMaRNWo9i9Sz32PabYmZBxPJNAfqkwpnCsxcFgZDZD"
-
 
 let APIAI_TOKEN="760b473de6e7408cbfa5a893258d8cb8"
 let APIAI_SESSION_ID="manish"
 
-app.disable('etag');
+let token = "EAAeEUf6U8mMBAITBtRhlLUzUrmQ2foucRY2AiO4ACIsdVEy55UNAZCxzkUC7ghtvvXNLmYKNpzuAaob5mTrZCNRwjAZAeViYWmnKl2lsr6vaKjRNaPf21EPR4PZB4Dvk3UC1KpMaRNWo9i9Sz32PabYmZBxPJNAfqkwpnCsxcFgZDZD"
 
 
-const apiai = require('apiai')(APIAI_TOKEN);
+
+app.disable('etag')
+
+
+const apiai = require('apiai')(APIAI_TOKEN)
+
+
+// ROUTES
+
+app.get('/', function(req, res) {
+    
+    let apiaiReq = apiai.textRequest(text, {
+      sessionId: APIAI_SESSION_ID
+    });
+    let aiText = ""
+    apiaiReq.on('response', (response) => {
+     // aiText = response.result;
+        aiText = response.result;
+      //text = aiText;
+    });
+    
+    console.log(aiText)
+    
+    apiaiReq.on('error', (error) => {
+      console.log(error)
+    });
+    res.send(aiText)
+	res.send("Hi I am a chatbot")
+})
+
+
 
 
 // Facebook 
@@ -72,13 +94,14 @@ function sendText(sender, text) {
     console.log(aiText);
     
     apiaiReq.on('error', (error) => {
-      console.log(error);
+      console.log(error)
     });
     
-    apiaiReq.end();
+    apiaiReq.end()
     
     
 	let messageData = {text: aiText}
+    
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
