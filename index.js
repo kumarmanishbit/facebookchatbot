@@ -15,10 +15,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 
-let APIAI_TOKEN = "760b473de6e7408cbfa5a893258d8cb8"
+let APIAI_TOKEN = "870b079dete5379cbha1a893258hgr3t"
 let APIAI_SESSION_ID = "manish"
 
-let token = "EAAeEUf6U8mMBAITBtRhlLUzUrmQ2foucRY2AiO4ACIsdVEy55UNAZCxzkUC7ghtvvXNLmYKNpzuAaob5mTrZCNRwjAZAeViYWmnKl2lsr6vaKjRNaPf21EPR4PZB4Dvk3UC1KpMaRNWo9i9Sz32PabYmZBxPJNAfqkwpnCsxcFgZDZD"
+let token = "MBAITBtRhlLUzUrmQ2foucRY2AiO4ACIsdxzkUC7ghtvvXNLmYKNpzuAaob5mTrZCNRwjAZAeViYWmnKl2lsr6vaKjRNaPf21EPR4PZB4Dvk3UC1KpMaRNWo9i9Sz32PabYmZBxPJNAfqkwpnCsxcFgZDZD"
 
 
 
