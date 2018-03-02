@@ -40,6 +40,7 @@ app.get('/', function(req, res) {
      // aiText = response.result;
         aiText = response.result.fulfillment.speech;
         console.log(aiText)
+        res.send(aiText)
       //text = aiText;
     });
     
