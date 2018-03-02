@@ -30,7 +30,7 @@ const apiai = require('apiai')(APIAI_TOKEN)
 
 app.get('/', function(req, res) {
     
-    let apiaiReq = apiai.textRequest(text, {
+    let apiaiReq = apiai.textRequest("Hi how are you?", {
       sessionId: APIAI_SESSION_ID
     });
     let aiText = ""
