@@ -48,9 +48,9 @@ app.get('/', function(req, res) {
       console.log(error)
     });
     
-    apiaiReq.end(aiText);
+    apiaiReq.end()
     
-    res.send()
+    res.send(aiText)
 	//res.send("Hi I am a chatbot")
 })
 
