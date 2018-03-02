@@ -87,23 +87,11 @@ function sendText(sender, text) {
     });
     
     
-    //let text = "";
-    let aiText = ""
-    
     apiaiReq.on('response', (response) => {
-     // aiText = response.result;
-        aiText = "Manish"
-      //text = aiText;
-    });
-    
-    console.log(aiText);
-    
-    apiaiReq.on('error', (error) => {
-      console.log(error)
-    });
-    
-    apiaiReq.end()
-    
+     let aiText = response.result.fulfillment.speech;
+     console.log(aiText)
+   //  res.send(aiText)
+     //text = aiText;
     
 	let messageData = {text: aiText}
     
@@ -122,6 +110,17 @@ function sendText(sender, text) {
 			console.log("response body error")
 		}
 	})
+    
+    });
+    
+    console.log(aiText);
+    
+    apiaiReq.on('error', (error) => {
+      console.log(error)
+    });
+    
+    apiaiReq.end()
+    
 }
 
 
